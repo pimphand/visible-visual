@@ -1,11 +1,36 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header';
+import Hero from '../components/Hero';
+import Experience from '../components/Experience';
+import Education from '../components/Education';
+import Skills from '../components/Skills';
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Faisol Dwiki Amrizal - CV">
+	<Header client:load />
+	<main>
+		<Hero client:load />
+		<Experience client:load />
+		<Education client:load />
+		<Skills client:load />
+	</main>
 </Layout>
+
+<style is:global>
+	@tailwind base;
+	@tailwind components;
+	@tailwind utilities;
+
+	html {
+		scroll-behavior: smooth;
+	}
+
+	body {
+		@apply bg-white;
+		font-family: 'Inter', sans-serif;
+	}
+</style>
