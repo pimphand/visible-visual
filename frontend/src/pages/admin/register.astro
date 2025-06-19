@@ -28,7 +28,7 @@ import Layout from '../../layouts/Layout.astro';
         name: form.name.value,
         password: form.password.value,
       };
-      const res = await fetch('/api/register', {
+      const res = await fetch('http://127.0.0.1:8080/api/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
