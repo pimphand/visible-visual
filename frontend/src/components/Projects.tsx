@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 
 export const projects = [
@@ -7,93 +7,194 @@ export const projects = [
     kategori: "E-commerce Website",
     teknologi: ["React JS", "Laravel", "Node.js"],
     url: "https://app.naisha.id",
-    gambar: "/images/app_naisha.webp"
+    gambar: ["/images/app_naisha.webp"]
   },
   {
     judul: "Kims Florist",
     kategori: "E-commerce Website",
     teknologi: ["Laravel", "Boostrap", "Payment Gateway [Paypal, Stripe, RazorPay]"],
     url: "https://kimsflorist.com.my/",
-    gambar: "/images/kimflorist.webp"
+    gambar: ["/images/kimflorist.webp"]
   },
   {
     judul: "Awetonet.io",
     kategori: "Company Profile",
     teknologi: ["Laravel"],
     url: "https://app.naisha.id",
-    gambar: "/images/awetonet.webp"
+    gambar: ["/images/awetonet.webp"]
   },
   {
     judul: "Axiom X Change",
     kategori: "Company Profile",
     teknologi: ["Vue.js", "Tailwind CSS"],
     url: "https://staging.axiomxchange.com/",
-    gambar: "/images/axiom.webp"
+    gambar: ["/images/axiom.webp"]
   },
   {
     judul: "Hummings",
     kategori: "E-commerce Website",
     teknologi: ["Laravel", "Boostrap", "Payment Gateway [Paypal, Stripe]"],
     url: "https://www.hummings.com/",
-    gambar: "/images/humming.webp"
+    gambar: ["/images/humming.webp"]
   },
   {
     judul: "Noelgifts",
     kategori: "E-commerce Website",
     teknologi: ["Laravel", "Boostrap", "Payment Gateway [Paypal, Stripe]"],
     url: "https://www.Noelgifts.com/",
-    gambar: "/images/noel.webp"
+    gambar: ["/images/noel.webp"]
   },
   {
     judul: "Posmoo",
     kategori: "Point Of Sale",
     teknologi: ["Laravel", "React Js"],
     url: "http://posmoo.dmpt.my.id/",
-    gambar: "/images/posmoo.webp"
+    gambar: ["/images/posmoo.webp"]
   },
   {
     judul: "Singhealth",
     kategori: "E-commerce Website",
     teknologi: ["Laravel", "Boostrap", "Payment Gateway [Paypal, Stripe]"],
     url: "https://corporate.noelgifts.com/",
-    gambar: "/images/singhealth.webp"
+    gambar: ["/images/singhealth.webp"]
   },
   {
     judul: "Webstore Jesusministries",
     kategori: "E-commerce Website",
     teknologi: ["Laravel", "Boostrap", "Payment Gateway [Paypal, Stripe, RazorPay]"],
     url: "https://webstore.jesusministries.org/",
-    gambar: "/images/webstore.webp"
+    gambar: ["/images/webstore.webp"]
   },
   {
     judul: "MCU Klinik",
     kategori: "Managemen System",
     teknologi: ["Laravel", "Boostrap"],
     url: "https://klinik.dmpt.my.id/",
-    gambar: "/images/mcu.webp"
+    gambar: ["/images/mcu.webp"]
   },
   {
     judul: "Desa Digital",
     kategori: "Layanan Desa",
     teknologi: ["Laravel", "Boostrap"],
     url: "https://desa.dmpt.my.id/",
-    gambar: "/images/desa.webp"
+    gambar: ["/images/desa.webp"]
   },
   {
     judul: "Managemen System Desa",
     kategori: "Managemen System Desa",
     teknologi: ["Laravel", "Boostrap"],
     url: "https://surat.dmpt.my.id/",
-    gambar: "/images/manajemen_desa.png"
+    gambar: ["/images/manajemen_desa.png"]
   },
   {
     judul: "Go Gili",
     kategori: "Travel Agency",
     teknologi: ["Laravel", "Boostrap", "Flutter"],
     url: "https://gogili.id/",
-    gambar: "/images/go_gili.png"
+    gambar: ["/images/go_gili.png"]
   }
 ];
+
+// Slideshow Component
+const ProjectSlideshow: React.FC<{ images: string[]; title: string }> = ({ images, title }) => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const nextImage = () => {
+    setCurrentImageIndex((prevIndex) => 
+      prevIndex === images.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+
+  const prevImage = () => {
+    setCurrentImageIndex((prevIndex) => 
+      prevIndex === 0 ? images.length - 1 : prevIndex - 1
+    );
+  };
+
+  const goToImage = (index: number) => {
+    setCurrentImageIndex(index);
+  };
+
+  if (images.length === 1) {
+    return (
+      <div className="relative h-48 border-b-4 border-black">
+        <img
+          src={images[0]}
+          alt={title}
+          className="w-full h-full object-cover"
+        />
+      </div>
+    );
+  }
+
+  return (
+    <div className="relative h-48 border-b-4 border-black overflow-hidden">
+      {/* Images */}
+      <div className="relative w-full h-full">
+        {images.map((image, index) => (
+          <img
+            key={index}
+            src={image}
+            alt={`${title} - Image ${index + 1}`}
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
+              index === currentImageIndex ? 'opacity-100' : 'opacity-0'
+            }`}
+          />
+        ))}
+      </div>
+
+      {/* Navigation Arrows */}
+      {images.length > 1 && (
+        <>
+          <button
+            onClick={prevImage}
+            className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 transition-all duration-200 z-10"
+            aria-label="Previous image"
+          >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+          
+          <button
+            onClick={nextImage}
+            className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 transition-all duration-200 z-10"
+            aria-label="Next image"
+          >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </>
+      )}
+
+      {/* Dots Indicator */}
+      {images.length > 1 && (
+        <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-2 z-10">
+          {images.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => goToImage(index)}
+              className={`w-2 h-2 rounded-full transition-all duration-200 ${
+                index === currentImageIndex 
+                  ? 'bg-white scale-125' 
+                  : 'bg-white bg-opacity-50 hover:bg-opacity-75'
+              }`}
+              aria-label={`Go to image ${index + 1}`}
+            />
+          ))}
+        </div>
+      )}
+
+      {/* Image Counter */}
+      {images.length > 1 && (
+        <div className="absolute top-2 right-2 bg-black bg-opacity-50 text-white text-xs px-2 py-1 rounded z-10">
+          {currentImageIndex + 1} / {images.length}
+        </div>
+      )}
+    </div>
+  );
+};
 
 const Projects: React.FC = () => {
   return (
@@ -116,13 +217,7 @@ const Projects: React.FC = () => {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="bg-white border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]"
             >
-              <div className="relative h-48 border-b-4 border-black">
-                <img
-                  src={project.gambar}
-                  alt={project.judul}
-                  className="w-full h-full object-cover"
-                />
-              </div>
+              <ProjectSlideshow images={project.gambar} title={project.judul} />
               <div className="p-8">
                 <h3 className="text-2xl font-black text-black mb-4">{project.judul}</h3>
                 <p className="text-[#FF6B6B] font-bold mb-6">{project.kategori}</p>
