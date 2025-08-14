@@ -69,15 +69,29 @@ export const projects = [
     judul: "MCU Klinik",
     kategori: "Managemen System",
     teknologi: ["Laravel", "Boostrap"],
-    url: "https://webstore.jesusministries.org/",
+    url: "https://klinik.dmpt.my.id/",
     gambar: "/images/mcu.webp"
   },
   {
     judul: "Desa Digital",
-    kategori: "Managemen System Surat",
+    kategori: "Layanan Desa",
     teknologi: ["Laravel", "Boostrap"],
     url: "https://desa.dmpt.my.id/",
     gambar: "/images/desa.webp"
+  },
+  {
+    judul: "Managemen System Desa",
+    kategori: "Managemen System Desa",
+    teknologi: ["Laravel", "Boostrap"],
+    url: "https://surat.dmpt.my.id/",
+    gambar: "/images/manajemen_desa.png"
+  },
+  {
+    judul: "Go Gili",
+    kategori: "Travel Agency",
+    teknologi: ["Laravel", "Boostrap", "Flutter"],
+    url: "https://gogili.id/",
+    gambar: "/images/go_gili.png"
   }
 ];
 
