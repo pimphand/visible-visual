@@ -33,7 +33,7 @@ const Hero = () => {
             className="text-lg text-black max-w-2xl mx-auto mb-12 font-bold"
           >
             <p className="mb-4">
-              Jl. Rimbakaya No. 20, Madiun City
+              Jl. Pangeran Diponegoro No. 20, Sleman City, Yogyakarta
             </p>
             <p className="mb-8">
               +62 895 8043 68260 | faisaldwiki69@gmail.com

@@ -4,6 +4,18 @@ const Experience = () => {
   const experiences = [
     {
       title: "Backend Developer",
+      company: "PT. Coding Collective Indonesia",
+      period: "January 2025 - Present",
+      responsibilities: [
+        "Developed and maintained E-Wallet systems with secure transaction handling and balance management",
+        "Integrated Payment Gateway services to support seamless and secure online transactions",
+        "Built and customized CRM systems to manage customer data, interactions, and business workflows",
+        "Designed and implemented Point of Sale (POS) systems for efficient sales and inventory management",
+        "Optimized database performance and ensured data security across financial and customer-related systems"
+      ]
+    },
+    {
+      title: "Backend Developer",
       company: "PT. Naisha Inspirasi Muslimah",
       period: "April 2021 - October 2024",
       responsibilities: [

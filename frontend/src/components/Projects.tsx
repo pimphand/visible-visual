@@ -92,6 +92,20 @@ export const projects = [
     teknologi: ["Laravel", "Boostrap", "Flutter"],
     url: "https://gogili.id/",
     gambar: ["/images/go_gili.png"]
+  },
+  {
+    judul: "Lombok Update",
+    kategori: "Company Profile",
+    teknologi: ["Laravel", "Boostrap"],
+    url: "https://lombokupdate.com/",
+    gambar: ["/images/lombok_update.png"]
+  },
+  {
+    judul: "Mandalika Putra Bersama",
+    kategori: "Company Profile",
+    teknologi: ["Laravel", "Boostrap"],
+    url: "https://cikurai.mandalikaputrabersama.com",
+    gambar: ["/images/mandalika.png"]
   }
 ];
 
